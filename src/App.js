@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Layout from './components/Layout/Layout';
+import LeftAside from './components/LeftAside/LeftAside'
+import Search from './components/LeftAside/Search';
+import RightAside from './components/RightAside/RightAside';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [toggle, setToggle] = useState(false)
+
+  return  (
+     <Layout>
+       <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-6 h-screen p-10 bg-blue-100">
+         <aside className="col-span-1 lg:col-span-2 bg-blue-300 h-full rounded-md">
+           <LeftAside toggle={toggle} setToggle={setToggle} />
+           <Search toggle={toggle} setToggle={setToggle}/>
+         </aside>
+         {/*Right Aside*/}
+         <aside className="col-span-1 lg:col-span-4 bg-blue-500 h-full rounded-md">
+           <RightAside/>
+         </aside>
+       </div>
+     </Layout>
   );
 }
 
